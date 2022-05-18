@@ -69,7 +69,7 @@ public class Magasin {
 	}
 
 
-	public void trierSelection(ComparateurCd comp){
+	public void trier(ComparateurCd comp){
 		//tri par sélection
 		int nbCds = this.listeCds.size();
 		for (int i =0 ; i < nbCds ; i++){
