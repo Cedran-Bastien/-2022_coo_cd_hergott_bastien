@@ -1,15 +1,13 @@
 package test;
 
 import XML.ChargeurMagasin;
-import donnees.ComparateurArtiste;
-import donnees.ComparateurCd;
-import donnees.ComparateurNomCd;
-import donnees.Magasin;
+import donnees.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -456,4 +454,48 @@ class ChargeurMagasinTest {
     }
 
 
+    @Test
+    public void testChercherArtiste() throws FileNotFoundException {
+        //preparation des données
+        ChargeurMagasin charg = new ChargeurMagasin("E:\\etude informatique\\S2\\Conception objet\\-2022_coo_cd_hergott_bastien\\source XML");
+        Magasin mag = charg.chargerMagasin();
+        SelecteurArtiste s = new SelecteurArtiste("Bénabar");
+        String s1 ="[--------------------------------------\n" +
+                "Bénabar - Bénabar (12 pistes)\n" +
+                "   .01. Bon anniversaire (2:58)\n" +
+                "   .02. Y'a une fille qu'habite chez moi (3:52)\n" +
+                "   .03. Vélo (2:41)\n" +
+                "   .04. Porcelaine (4:13)\n" +
+                "   .05. À notre santé (3:18)\n" +
+                "   .06. Majorette (5:15)\n" +
+                "   .07. Couche tard et lève tôt (3:09)\n" +
+                "   .08. Coup du lapin (3:06)\n" +
+                "   .09. Saturne (4:17)\n" +
+                "   .10. Dramelet (3:28)\n" +
+                "   .11. Approchez (2:41)\n" +
+                "   .12. À poings fermés (2:53)\n" +
+                "--------------------------------------\n" +
+                ", --------------------------------------\n" +
+                "Bénabar - Les Risques du métier (12 pistes)\n" +
+                "   .01. Monospace (2:29)\n" +
+                "   .02. Dis-lui oui (3:26)\n" +
+                "   .03. Paresseuse (3:32)\n" +
+                "   .04. Je suis de celles (3:28)\n" +
+                "   .05. Vade retro Téléphone (3:11)\n" +
+                "   .06. L'Itinéraire (3:12)\n" +
+                "   .07. Sac à main (3:22)\n" +
+                "   .08. La station Mir (3:40)\n" +
+                "   .09. La coquette (2:42)\n" +
+                "   .10. Les mots d'amour (3:12)\n" +
+                "   .11. Monsieur René (2:52)\n" +
+                "   .12. Le Zoo de Vincennes (3:57)\n" +
+                "--------------------------------------\n" +
+                "]";
+
+        //methode testé
+        ArrayList<CD> cd = mag.chercherArstiste(s);
+
+        //test
+        Assertions.assertEquals(s1,cd.toString(),"le toString de mag doit etre identique a s1");
+    }
 }

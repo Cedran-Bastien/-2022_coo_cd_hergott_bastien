@@ -89,4 +89,14 @@ public class Magasin {
 		}
 	}
 
+	public ArrayList<CD> chercherArstiste(Selecteur s){
+		ArrayList<CD> cd = new ArrayList<CD>();
+		for (int i = 0;i<this.listeCds.size();i++){
+			if (s.garderCd(this.listeCds.get(i))){
+				cd.add(this.listeCds.get(i));
+			}
+		}
+		return (cd);
+	}
+
 }
